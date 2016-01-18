@@ -20,9 +20,7 @@
         <h1>Kaiyue An</h1>
 
         <h2>Favorite Programming Languages</h2>
-        <ul class="collection">
-          <li class="collection-item">Java</li>
-          <li class="collection-item">C++</li>
+        <ul class="collection" id="languages">
         </ul>
 
         <h2>Favorite Food</h2>
@@ -41,6 +39,13 @@
           var foods = snapshot.val()
           foods.forEach(function(food){
             $('#foods').append('<li class="collection-item">' + food + '</li>')
+          })
+        })
+
+        ref.child('bio/favorite_programming_language').once('value', function(snapshot){
+          var languages = snapshot.val()
+          languages.forEach(function(language){
+            $('#languages').append('<li class="collection-item">' + language + '</li>')
           })
         })
       </script>
